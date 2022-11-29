@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:07:36 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/11/29 20:10:16 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:19:20 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 static int	ft_putstr(char *arg)
 {
-
+	//no final do printf tera que ter toda o tamanho de cada funcao e desta forma temos que contar e retornar este valor
 }
 
 static int	format(char	c, va_list args)
