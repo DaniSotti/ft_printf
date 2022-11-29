@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:07:36 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/11/28 23:51:18 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:10:16 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,40 @@
 //Encontrar uma forma de ler %d, %i por exemplo
 //1. Descobrir quantos parametros a função tem;
 #include <stdarg.h>
+#include "ft_printf.h"
 
-int ft_printf(const char *, ...)
+static int	ft_putstr(char *arg)
 {
-    //va_list args;
-    //va_start;
-    //va_end.
+
+}
+
+static int	format(char	c, va_list args)
+{
+	if (c == 's')
+		return (ft_putstr(va_arg(args, char *)));
+}
+	
+int	ft_printf(const char *str, ...)
+{
+	va_list args;
+	int		len;
+	int		i;	
+	
+	i = 0;
+	va_start(args, str);
+	while (str[i])
+	{
+		if (str[i] == '%')
+		{
+			i++;
+			len += format(str[i], args);
+		}
+		else
+			len += ft_putstr(str);
+		i++;
+	}
+	va_end (args);
+	return (len);
     
     /*%c Prints a single character.
     %s Prints a string (as defined by the common C convention).
@@ -34,3 +62,7 @@ int ft_printf(const char *, ...)
     %% Prints a percent sign.*/
 
 }
+
+//ft_printf
+//validacao do tipo da variavel 
+//calcular o tamanho da string 
