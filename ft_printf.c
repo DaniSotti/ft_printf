@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:07:36 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/11/29 20:19:20 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/01 23:19:25 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,33 @@
 //Criar varias funções para imprimir números, string, numeros hexadecimais etc etc;
 //Encontrar uma forma de ler %d, %i por exemplo
 //1. Descobrir quantos parametros a função tem;
-#include <stdarg.h>
 #include "ft_printf.h"
 
-static int	ft_putstr(char *arg)
+static int  ft_putchar(int c)
 {
-	//no final do printf tera que ter toda o tamanho de cada funcao e desta forma temos que contar e retornar este valor
+    write(1, &c, 1);
+    return (1);
 }
 
 static int	format(char	c, va_list args)
 {
+    if (c == 'c')
+        return (ft_putchar(va_arg(args, int))); //%c Prints a single character.
 	if (c == 's')
 		return (ft_putstr(va_arg(args, char *)));
+    return (0);
+    /*if (c == 'p')
+        return (ft_puthexa(va_arg(args, ??)));
+    if (c == 'd')
+        return (ft_putfloat(va_arg(args, int)));
+    if (c == 'i')
+        return (ft_putint(va_arg(args, int)));
+    if (c == 'u')
+        return (ft_putuncdeci(va_arg(args, unsigned int)));
+    if (c == 'x' || c == 'X')
+        return (ft_puthexa(va_arg(args, unsigned int)));
+    if (c == '%')
+        ft_putchar('%'); */
 }
 	
 int	ft_printf(const char *str, ...)
@@ -36,6 +51,7 @@ int	ft_printf(const char *str, ...)
 	int		i;	
 	
 	i = 0;
+    len = 0;
 	va_start(args, str);
 	while (str[i])
 	{
@@ -51,7 +67,7 @@ int	ft_printf(const char *str, ...)
 	va_end (args);
 	return (len);
     
-    /*%c Prints a single character.
+    /*
     %s Prints a string (as defined by the common C convention).
     %p The void * pointer argument has to be printed in hexadecimal format.
     %d Prints a decimal (base 10) number.

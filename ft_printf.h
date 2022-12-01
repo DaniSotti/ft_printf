@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 20:02:51 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/01 23:19:34 by dde-sott         ###   ########.fr       */
+/*   Created: 2022/12/01 22:50:17 by dde-sott          #+#    #+#             */
+/*   Updated: 2022/12/01 23:12:37 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 
-int	ft_putstr(const char *arg)
-{
-	int	i;
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
 
-	i = 0;
-	while (arg[i] != '\0')
-	{
-		write(1, &arg[i], 1);
-		i++;
-	}
-	return (i);
-}
+int	ft_putstr(const char *arg);
+int	ft_printf(const char *str, ...);
 
-/*
-#include <stdio.h>
-int main ()
-{
-    char str[] = "Dani";
-    ft_putstr(str);
-    return (0);
-} */
+#endif
