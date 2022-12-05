@@ -6,7 +6,7 @@
 #    By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 22:50:04 by dde-sott          #+#    #+#              #
-#    Updated: 2022/12/01 23:02:59 by dde-sott         ###   ########.fr        #
+#    Updated: 2022/12/05 22:21:47 by dde-sott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@
 NAME = libftprintf.a
 
 #.c files
-SOURCE = ft_printf ft_putstr 
+SOURCE = ft_printf ft_putstr ft_itoa \
+         ft_putnbr ft_putnbru ft_putnbrhex \
+		 ft_putchar ft_utoa ft_printpointer
 
 #transformar os ficheiros em ficheiro .c
 C_SOURCE = $(SOURCE:%=%.c)

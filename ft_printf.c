@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:07:36 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/01 23:19:25 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/05 22:20:37 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,26 @@
 //1. Descobrir quantos parametros a função tem;
 #include "ft_printf.h"
 
-static int  ft_putchar(int c)
-{
-    write(1, &c, 1);
-    return (1);
-}
-
 static int	format(char	c, va_list args)
 {
     if (c == 'c')
         return (ft_putchar(va_arg(args, int))); //%c Prints a single character.
-	if (c == 's')
+	else if (c == 's')
 		return (ft_putstr(va_arg(args, char *)));
-    return (0);
-    /*if (c == 'p')
-        return (ft_puthexa(va_arg(args, ??)));
+    if (c == 'p')
+        return (ft_printpointer(va_arg(args, unsigned int)));
     if (c == 'd')
-        return (ft_putfloat(va_arg(args, int)));
-    if (c == 'i')
-        return (ft_putint(va_arg(args, int)));
+        return (ft_putnbr(va_arg(args, int)));
+    else if (c == 'i')
+       return (ft_putnbr(va_arg(args, int)));
     if (c == 'u')
-        return (ft_putuncdeci(va_arg(args, unsigned int)));
+        return (ft_putnbru(va_arg(args, unsigned int)));
     if (c == 'x' || c == 'X')
-        return (ft_puthexa(va_arg(args, unsigned int)));
-    if (c == '%')
-        ft_putchar('%'); */
+       return (ft_putnbrhex(va_arg(args, unsigned int), c));
+    else if (c == '%')
+        return (ft_putchar(c));
+    else 
+        return (0);
 }
 	
 int	ft_printf(const char *str, ...)
@@ -61,7 +56,7 @@ int	ft_printf(const char *str, ...)
 			len += format(str[i], args);
 		}
 		else
-			len += ft_putstr(str);
+			len += ft_putchar(str[i]);
 		i++;
 	}
 	va_end (args);
