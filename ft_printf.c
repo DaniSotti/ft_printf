@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:07:36 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/05 22:20:37 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:49:01 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 //1. Descobrir quantos parametros a função tem;
 #include "ft_printf.h"
 
-static int	format(char	c, va_list args)
+static int	format(char c, va_list args)
 {
-    if (c == 'c')
-        return (ft_putchar(va_arg(args, int))); //%c Prints a single character.
+	if (c == 'c')
+		return (ft_putchar(va_arg(args, int)));
 	else if (c == 's')
 		return (ft_putstr(va_arg(args, char *)));
     if (c == 'p')
-        return (ft_printpointer(va_arg(args, unsigned int)));
+        return (ft_printptr(va_arg(args, long int)));
     if (c == 'd')
         return (ft_putnbr(va_arg(args, int)));
     else if (c == 'i')

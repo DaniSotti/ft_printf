@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:05:12 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/02 23:17:04 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:40:54 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 int	ft_putnbr(int n)
 {
-    char    *str;
-    int     len;
+	char	*str;
+	int		len;
 
-    str = ft_itoa(n);
-    len = ft_putstr(str);
-
-    free(str);
-    return (len);
+	str = ft_itoa(n);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }

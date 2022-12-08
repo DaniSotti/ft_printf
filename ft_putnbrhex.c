@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:46:33 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/05 22:30:04 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/08 19:43:31 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_hexalen(unsigned int decimal)
 }
 int	ft_putnbrhex(unsigned int decimal, char format)
 {
-	char hexa[23];
+	char hexa[25];
 	int	len;
     int i = 0;
     int remain;
