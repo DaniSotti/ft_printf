@@ -6,14 +6,14 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:21:53 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/03 11:21:57 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/09 22:35:03 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int  ft_putchar(int c)
+int	ft_putchar(int c)
 {
-    write(1, &c, 1);
-    return (1);
+	write(1, &c, 1);
+	return (1);
 }

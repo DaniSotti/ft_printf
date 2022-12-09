@@ -6,52 +6,47 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:00:23 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/08 19:54:26 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/09 22:34:15 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_hexalen(long int pointer)
+static int	ft_hexalen(size_t pointer)
 {
 	int	len;
 
 	len = 0;
-	//if (pointer == 0)
-	//	return (1);
-	while (pointer > 0)
+	while (pointer != 0)
 	{
 		len++;
-		pointer = pointer /16;
+		pointer = pointer / 16;
 	}
 	return (len);
 }
 
-int	ft_printptr(long int pointer)
+int	ft_printptr(size_t npointer, char *base)
 {
-	char	hexa[100];
+	char	hexa[25];
 	int		len;
 	int		i;
-	int		remain;
 
 	i = 0;
-	len = 0;
-	len = ft_hexalen(pointer) + 2;
-	if (!pointer)
-		ft_putstr("nil");
-	else
-		write(1, "0x", 2);
-	while (pointer != 0)
+	len = ft_hexalen(npointer);
+	if (npointer == 0)
 	{
-		//len += ft_hexalen(pointer);
-		remain = pointer % 16;
-		if (remain < 10)
-			remain = 48 + remain;
-		else
-			remain = remain + 87;
-		hexa[i] = remain;
-		pointer = pointer / 16;
-		i++;
+		write(1, "0x0", 3);
+		len += 3;
+	}
+	else
+	{
+		write(1, "0x", 2);
+		len += 2;
+	}
+	while (npointer != 0)
+	{
+		hexa[i++] = base[npointer % 16];
+		npointer /= 16;
 	}
 	while (i--)
 		ft_putchar(hexa[i]);

@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 20:02:51 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/02 23:20:34 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/09 22:16:18 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,3 @@ int	ft_putstr(const char *arg)
 	}
 	return (i);
 }
-
-/*
-#include <stdio.h>
-int main ()
-{
-    char str[] = "Dani";
-    ft_putstr(str);
-    return (0);
-} */
