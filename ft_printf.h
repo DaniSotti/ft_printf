@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 11:23:36 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/09 23:36:14 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/11 18:44:06 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_putnbr(int n);
 int		ft_putnbru(unsigned int n);
 int		ft_putnbrhex(unsigned int n, char *base);
 int		ft_putchar(int c);
-char	*ft_utoa(unsigned int n);
+char	ft_utoa(unsigned int n);
 int		ft_printptr(size_t npointer, char *base);
 
 #endif

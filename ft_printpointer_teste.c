@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 18:00:23 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/09 22:34:15 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/11 16:39:14 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	ft_printptr(size_t npointer, char *base)
 	len = ft_hexalen(npointer);
 	if (npointer == 0)
 	{
-		write(1, "0x0", 3);
-		len += 3;
+		write(1, "(nil)", 5);
+		len += 5;
 	}
 	else
 	{

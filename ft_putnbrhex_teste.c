@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:46:33 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/09 23:21:34 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/11 17:44:39 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	ft_hexlen(unsigned int decimal)
 	len = 0;
 	while (decimal != 0)
 	{
+		decimal /= 16;
 		len++;
-		decimal = decimal / 16;
 	}
 	return (len);
 }
