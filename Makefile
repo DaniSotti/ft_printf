@@ -6,7 +6,7 @@
 #    By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 22:50:04 by dde-sott          #+#    #+#              #
-#    Updated: 2022/12/11 18:22:24 by dde-sott         ###   ########.fr        #
+#    Updated: 2022/12/12 23:49:30 by dde-sott         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,8 @@ NAME = libftprintf.a
 
 #.c files
 SOURCE = ft_printf ft_putstr \
-         ft_putnbr ft_putnbru \
-		 ft_putchar \
-		 ft_numbers
-
+		 ft_numbers ft_putchar \
+		 
 #transformar os ficheiros em ficheiro .c
 C_SOURCE = $(SOURCE:%=%.c)
 

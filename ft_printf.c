@@ -6,7 +6,7 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 23:07:36 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/11 18:15:56 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/12 23:47:23 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ static int	format(char c, va_list args)
 	else if (c == 'p')
 		return (ft_printptr(va_arg(args, size_t), "0123456789abcdef"));
 	else if (c == 'd')
-		return (ft_putnbr(va_arg(args, int)));
+		return (print_number(va_arg(args, int)));
 	else if (c == 'i')
-		return (ft_putnbr(va_arg(args, int)));
+		return (print_number(va_arg(args, int)));
 	else if (c == 'u')
-		return (ft_putnbru(va_arg(args, unsigned int)));
+		return (print_number_u(va_arg(args, unsigned int)));
 	else if (c == 'x')
 		return (ft_putnbrhex(va_arg(args, unsigned int), "0123456789abcdef"));
 	else if (c == 'X')

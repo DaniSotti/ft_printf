@@ -6,14 +6,14 @@
 /*   By: dde-sott <dde-sott@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:13:00 by dde-sott          #+#    #+#             */
-/*   Updated: 2022/12/11 18:47:57 by dde-sott         ###   ########.fr       */
+/*   Updated: 2022/12/13 00:14:28 by dde-sott         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// ft_itoa para transformar um numero inteiro em string
-static int	number_len_(unsigned int n)
+// para transformar um numero inteiro em string
+static int	number_len(long long n, int base)
 {
 	unsigned int	len;
 
@@ -24,103 +24,47 @@ static int	number_len_(unsigned int n)
 		len++;
 	while (n != 0)
 	{
-		n /= 10;
+		n /= base;
 		len++;
 	}
 	return (len);
 }
 
-char	*ft_itoa(int n)
+int	print_number(int nb)
 {
-	char			*n_char;
-	unsigned int	len;
-	unsigned int	num;
+	int			len;
+	long long	n;
 
-	len = number_len_(num);
-	n_char = (char *)malloc(sizeof(char) * (len + 1));
-	if (!n_char)
-		return (0);
-	if (n < 0)
+	n = (long long) nb;
+	len = number_len(n, 10);
+	if (nb == -2147483648)
 	{
-		n_char[0] = '-';
-		num = -n;
+		ft_putchar('-');
+		ft_putchar('2');
+		nb = 147483648;
 	}
-	else
-		num = n;
-	if (num == 0)
-		n_char[0] = '0';
-	n_char[len] = '\0';
-	while (num != 0)
+	if (nb < 0)
 	{
-		n_char[len - 1] = (num % 10) + '0';
-		num = num / 10;
-		len--;
+		ft_putchar('-');
+		nb = -nb;
 	}
-	return (n_char);
+	if (nb > 9)
+	{
+		print_number(nb / 10);
+	}
+	ft_putchar(48 + nb % 10);
+	return (len);
 }
 
 //Transformar o numero em unsigned
-static int	number_len(unsigned int n)
-{
-	unsigned int	len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	else if (n < 0)
-		len++;
-	while (n != 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-char	ft_utoa(unsigned int n)
-{
-    if (n > 9)
-        ft_utoa(n / 10);
-    ft_putchar(n % 10 + 48);
-	/*char			*n_char;
-	unsigned int	len;
-	unsigned int	num;
-
-	len = number_len(n);
-	n_char = (char *)malloc(sizeof(char) * (len + 1));
-	if (!n_char)
-		return (0);
-	if (n < 0)
-	{
-		n_char[0] = '-';
-		num = -n;
-	}
-	else
-		num = n;
-	if (num == 0)
-		n_char[0] = '0';
-	n_char[len] = '\0';
-	while (num != 0)
-	{
-		n_char[len - 1] = (num % 10) + '0';
-		num = num / 10;
-		len--;
-	}
-	return (n_char);*/
-}
-
-//print pointer
-
-static int	ft_hexalen(size_t pointer)
+int	print_number_u(unsigned int nbu)
 {
 	int	len;
 
-	len = 0;
-	while (pointer != 0)
-	{
-		len++;
-		pointer = pointer / 16;
-	}
+	len = number_len(nbu, 10);
+	if (nbu > 9)
+		print_number_u(nbu / 10);
+	ft_putchar(48 + nbu % 10);
 	return (len);
 }
 
@@ -131,11 +75,11 @@ int	ft_printptr(size_t npointer, char *base)
 	int		i;
 
 	i = 0;
-	len = ft_hexalen(npointer);
+	len = 0;
 	if (npointer == 0)
 	{
-		write(1, "(nil)", 5);
-		len += 5;
+		write(1, "0x0", 3);
+		len += 3;
 	}
 	else
 	{
@@ -146,23 +90,10 @@ int	ft_printptr(size_t npointer, char *base)
 	{
 		hexa[i++] = base[npointer % 16];
 		npointer /= 16;
+		len++;
 	}
 	while (i--)
 		ft_putchar(hexa[i]);
-	return (len);
-}
-
-//print the hexadecimal
-static int	ft_hexlen_(unsigned int decimal)
-{
-	int	len;
-
-	len = 0;
-	while (decimal != 0)
-	{
-		decimal /= 16;
-		len++;
-	}
 	return (len);
 }
 
@@ -173,7 +104,7 @@ int	ft_putnbrhex(unsigned int decimal, char *base)
 	int		i;
 
 	i = 0;
-	len = ft_hexlen_(decimal);
+	len = number_len(decimal, 16);
 	if (decimal == 0)
 		return (ft_putchar('0'));
 	while (decimal != 0)
